@@ -11,26 +11,34 @@
   <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
   <style>
     .attribution { font-size: 11px; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
+    .attribution__link { color: hsl(228, 45%, 44%); }
   </style>
 </head>
 <body>
 
-  Todo
+  <h1 class="title">Todo</h1>
+  <button class="button"><img src="images/icon-moon.svg" alt=""></button>
 
-  <!-- Add dynamic number --> items left
+  <div class="todo">
+    <input type="todo__text" placeholder="Create a new todo...">
+    <div class="todo__list">
+      <!-- tasks -->
+    </div>
+  </div>
 
-  All
-  Active 
-  Completed
+  <p class="paragraph"><!-- Add dynamic number --> items left</p>
 
-  Clear Completed
+  <button class="button">All</button>
+  <button class="button">Active</button>
+  <button class="button">Completed</button>
 
-  Drag and drop to reorder list
+  <button class="button">Clear Completed</button>
+
+  <p class="paragraph">Drag and drop to reorder list</p>
 
   <div class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-    Coded by <a href="#">Your Name Here</a>.
+    Challenge by <a class="attribution__link" href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+    Coded by <a class="attribution__link" href="#">Your Name Here</a>.
   </div>
 </body>
 </html>
