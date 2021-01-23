@@ -1,6 +1,10 @@
 const input = document.querySelector('.todo__input');
 const list = document.querySelector('.todo__list');
-let taskNumber = document.getElementById('taskNumber');
+const taskNumber = document.getElementById('taskNumber');
+const btnAll = document.getElementById('btnAll');
+const btnActive = document.getElementById('btnActive');
+const btnComplete = document.getElementById('btnComplete');
+const btnClearCompleted = document.getElementById('btnClearCompleted');
 let todo = [{
         id: 1,
         state: true,
@@ -24,6 +28,7 @@ function addTodo() {
     todo.push({id: number, state: true, desc: input.value});
 
     task.classList.add('todo__list-item');
+    task.dataset.id = number;
     task.textContent = todo[number - 1].desc;
     list.appendChild(task);
 
@@ -31,9 +36,12 @@ function addTodo() {
 }
 
 function viewAll() {
-    todo.forEach(el => {
+    todo.forEach((el, i) => {
+        const id = i + 1;
         const task = document.createElement('li');
+
         task.classList.add('todo__list-item');
+        task.dataset.id = id;
         task.textContent = el.desc;
         list.appendChild(task);
 
@@ -42,11 +50,48 @@ function viewAll() {
 }
 
 document.addEventListener('DOMContentLoaded', viewAll);
-function viewActive() {}
-function viewCompleted() {}
+
+btnAll.addEventListener('click', ()=> {
+    const tasks = document.querySelectorAll('li');
+    tasks.forEach(el => el.style.display = "list-item");
+})
+
+// let todoActive = todo.filter(el => el.state === true);
+btnActive.addEventListener('click', ()=> {
+    todo.forEach(el => {
+        if (el.state === false) {
+            let taskActive = document.querySelector(`li[data-id="${el.id}"]`);
+            taskActive.style.display = "none";
+        } else {
+            let taskActive = document.querySelector(`li[data-id="${el.id}"]`);
+            taskActive.style.display = "list-item";
+        }
+    });
+});
+
+// let todoCompleted = todo.filter(el => el.state === false);
+btnCompleted.addEventListener('click', () => {
+    todo.forEach(el => {
+        if (el.state === true) {
+            let taskActive = document.querySelector(`li[data-id="${el.id}"]`);
+            taskActive.style.display = "none";
+        } else {
+            let taskActive = document.querySelector(`li[data-id="${el.id}"]`);
+            taskActive.style.display = "list-item";
+        }
+    });
+});
+
+btnClearCompleted.addEventListener('click', ()=> {
+    todo.forEach(el => {
+        if (el.state === false) {
+            let taskActive = document.querySelector(`li[data-id="${el.id}"]`);
+            taskActive.remove();
+        }
+    });
+});
 
 input.addEventListener('keypress', (e) => {
-    // añadir tarea
     if (e.keyCode === 13) {
         e.preventDefault();
         addTodo();
