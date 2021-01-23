@@ -1,10 +1,13 @@
+// elements
 const input = document.querySelector('.todo__input');
 const list = document.querySelector('.todo__list');
 const taskNumber = document.getElementById('taskNumber');
+// buttons
 const btnAll = document.getElementById('btnAll');
 const btnActive = document.getElementById('btnActive');
 const btnComplete = document.getElementById('btnComplete');
 const btnClearCompleted = document.getElementById('btnClearCompleted');
+// objects
 let todo = [{
         id: 1,
         state: true,
@@ -55,6 +58,7 @@ function viewAll() {
 
         checkbox.id = id;
         checkbox.setAttribute("type", "checkbox");
+        if (el.state === false) checkbox.setAttribute("checked", "");
         task.appendChild(checkbox);
 
         taskNumber.textContent = todo.length;
@@ -62,6 +66,31 @@ function viewAll() {
 }
 
 document.addEventListener('DOMContentLoaded', viewAll);
+
+// Checked task
+list.addEventListener('change', e => {
+    const checkbox = e.target;
+    let found = false;
+
+    if (checkbox.checked) {
+        for (let i = 0; i < todo.length && found === false; i++) {
+            // console.log('found');
+            if (todo[i].id === parseInt(checkbox.id)) {
+                todo[i].state = false;
+                found = true;
+            }
+        }
+    }
+    else {
+        for (let i = 0; i < todo.length && found === false; i++) {
+            // console.log('found');
+            if (todo[i].id === parseInt(checkbox.id)) {
+                todo[i].state = true;
+                found = true;
+            }
+        }
+    }
+})
 
 btnAll.addEventListener('click', ()=> {
     const tasks = document.querySelectorAll('li');
