@@ -38,11 +38,12 @@ function addTodo() {
     task.textContent = todo[number - 1].desc;
     list.appendChild(task);
 
-    checkbox.id = number;
+    checkbox.id = `checkbox${number}`;
+    checkbox.classList.add('checkbox');
     checkbox.setAttribute("type", "checkbox");
     task.appendChild(checkbox);
 
-    button.id = number;
+    button.id = `btn${number}`;
     button.classList.add('button--delete');
     task.appendChild(button);
 
@@ -62,12 +63,13 @@ function viewAll() {
         task.textContent = el.desc;
         list.appendChild(task);
 
-        checkbox.id = id;
+        checkbox.id = `checkbox${id}`;
+        checkbox.classList.add('checkbox');
         checkbox.setAttribute("type", "checkbox");
         if (el.state === false) checkbox.setAttribute("checked", "");
         task.appendChild(checkbox);
 
-        button.id = id;
+        button.id = `btn${id}`;
         button.classList.add('button--delete');
         task.appendChild(button);
 
@@ -113,6 +115,7 @@ btnActive.addEventListener('click', ()=> {
         if (el.state === false) {
             let taskActive = document.querySelector(`li[data-id="${el.id}"]`);
             taskActive.style.display = "none";
+            // aqui genera un error si los tareas completadas ya se limpiaron
         } else {
             let taskActive = document.querySelector(`li[data-id="${el.id}"]`);
             taskActive.style.display = "list-item";
@@ -126,6 +129,7 @@ btnCompleted.addEventListener('click', () => {
         if (el.state === true) {
             let taskActive = document.querySelector(`li[data-id="${el.id}"]`);
             taskActive.style.display = "none";
+            // aqui genera un error si los tareas completadas ya se limpiaron
         } else {
             let taskActive = document.querySelector(`li[data-id="${el.id}"]`);
             taskActive.style.display = "list-item";
