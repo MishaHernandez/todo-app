@@ -102,12 +102,22 @@ list.addEventListener('change', e => {
             }
         }
     }
+});
+
+// Deleted task
+list.addEventListener('click', e => {
+    const button = e.target;
+    
+    if (button.matches('.button--delete')) {
+        console.log(button.parentElement);
+        button.parentElement.remove();
+    }
 })
 
 btnAll.addEventListener('click', ()=> {
     const tasks = document.querySelectorAll('li');
     tasks.forEach(el => el.style.display = "list-item");
-})
+});
 
 // let todoActive = todo.filter(el => el.state === true);
 btnActive.addEventListener('click', ()=> {
@@ -151,4 +161,4 @@ input.addEventListener('keypress', (e) => {
         e.preventDefault();
         addTodo();
     }
-})
+});
