@@ -23,14 +23,20 @@ let todo = [{
 
 function addTodo() {
     const task = document.createElement('li');
+    const checkbox = document.createElement('input');
     const number = todo.length + 1;
 
     todo.push({id: number, state: true, desc: input.value});
 
+    // Render task
     task.classList.add('todo__list-item');
     task.dataset.id = number;
     task.textContent = todo[number - 1].desc;
     list.appendChild(task);
+
+    checkbox.id = number;
+    checkbox.setAttribute("type", "checkbox");
+    task.appendChild(checkbox);
 
     taskNumber.textContent = todo.length;
 }
@@ -39,11 +45,17 @@ function viewAll() {
     todo.forEach((el, i) => {
         const id = i + 1;
         const task = document.createElement('li');
+        const checkbox = document.createElement('input');
 
+        // Render task
         task.classList.add('todo__list-item');
         task.dataset.id = id;
         task.textContent = el.desc;
         list.appendChild(task);
+
+        checkbox.id = id;
+        checkbox.setAttribute("type", "checkbox");
+        task.appendChild(checkbox);
 
         taskNumber.textContent = todo.length;
     });
