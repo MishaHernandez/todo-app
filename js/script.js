@@ -27,6 +27,7 @@ let todo = [{
 function addTodo() {
     const task = document.createElement('li');
     const checkbox = document.createElement('input');
+    const button = document.createElement('button');
     const number = todo.length + 1;
 
     todo.push({id: number, state: true, desc: input.value});
@@ -41,6 +42,10 @@ function addTodo() {
     checkbox.setAttribute("type", "checkbox");
     task.appendChild(checkbox);
 
+    button.id = number;
+    button.classList.add('button--delete');
+    task.appendChild(button);
+
     taskNumber.textContent = todo.length;
 }
 
@@ -49,6 +54,7 @@ function viewAll() {
         const id = i + 1;
         const task = document.createElement('li');
         const checkbox = document.createElement('input');
+        const button = document.createElement('button');
 
         // Render task
         task.classList.add('todo__list-item');
@@ -60,6 +66,10 @@ function viewAll() {
         checkbox.setAttribute("type", "checkbox");
         if (el.state === false) checkbox.setAttribute("checked", "");
         task.appendChild(checkbox);
+
+        button.id = id;
+        button.classList.add('button--delete');
+        task.appendChild(button);
 
         taskNumber.textContent = todo.length;
     });
