@@ -13,8 +13,10 @@
 </head>
 <body>
 
-  <h1 class="title">Todo</h1>
-  <button class="button"><img src="images/icon-moon.svg" alt=""></button>
+  <div class="header-wrapper">
+    <h1 class="title">Todo</h1>
+    <button class="button-theme"><img src="images/icon-moon.svg" alt=""></button>
+  </div>
 
   <div class="todo">
     <input class="todo__input" type="text" placeholder="Create a new todo...">
@@ -24,13 +26,15 @@
     </ul>
   </div>
 
-  <p class="paragraph"><span id="numberTasks"></span> items left</p>
+  <div class="todo__footer-tools"><p class="paragraph"><span id="numberTasks"></span> items left</p></div>
 
-  <button id="btnAll" class="button">All</button>
-  <button id="btnActive" class="button">Active</button>
-  <button id="btnCompleted" class="button">Completed</button>
+  <div class="todo__footer-filter">
+    <button id="btnAll" class="button">All</button>
+    <button id="btnActive" class="button">Active</button>
+    <button id="btnCompleted" class="button">Completed</button>
+  </div>
 
-  <button id="btnClearCompleted" class="button">Clear Completed</button>
+  <div class="todo__footer-tools"><button id="btnClearCompleted" class="button">Clear Completed</button></div>
 
   <p class="paragraph">Drag and drop to reorder list</p>
 

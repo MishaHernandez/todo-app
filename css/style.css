@@ -354,6 +354,23 @@ template {
 body {
   font-size: 18px;
   font-family: "Josefin Sans";
+  background-color: lightblue;
+}
+
+.header-wrapper {
+  max-width: 540px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.title {
+  text-transform: uppercase;
+}
+
+.button-theme {
+  display: block;
+  border-style: none;
+  background-color: transparent;
 }
 
 .attribution {

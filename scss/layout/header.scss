@@ -1,0 +1,16 @@
+.header-wrapper {
+    max-width: 540px;
+    // flex container
+    display: flex;
+    justify-content: space-between;
+}
+
+.title {
+    text-transform: uppercase;
+}
+
+.button-theme {
+    display: block;
+    border-style: none;
+    background-color: transparent;
+}
