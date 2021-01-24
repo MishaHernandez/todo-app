@@ -1,7 +1,6 @@
 // elements
 const input = document.querySelector('.todo__input');
 const list = document.querySelector('.todo__list');
-const taskNumber = document.getElementById('taskNumber');
 // buttons
 const btnAll = document.getElementById('btnAll');
 const btnActive = document.getElementById('btnActive');
@@ -23,6 +22,13 @@ let todo = [{
         state: true,
         desc: 'tercera tarea'
     }];
+
+function currentNumberTask() {
+    const items = document.querySelectorAll('.todo__list-item');
+    const numberTasks = document.getElementById('numberTasks');
+    
+    numberTasks.textContent = items.length;
+}
 
 function addTodo() {
     const task = document.createElement('li');
@@ -47,7 +53,7 @@ function addTodo() {
     button.classList.add('button--delete');
     task.appendChild(button);
 
-    taskNumber.textContent = todo.length;
+    currentNumberTask();
 }
 
 function viewAll() {
@@ -73,8 +79,8 @@ function viewAll() {
         button.classList.add('button--delete');
         task.appendChild(button);
 
-        taskNumber.textContent = todo.length;
     });
+    currentNumberTask();
 }
 
 document.addEventListener('DOMContentLoaded', viewAll);
@@ -109,23 +115,24 @@ list.addEventListener('click', e => {
     const button = e.target;
     
     if (button.matches('.button--delete')) {
-        console.log(button.parentElement);
         button.parentElement.remove();
     }
+    currentNumberTask();
 })
 
 btnAll.addEventListener('click', ()=> {
     const tasks = document.querySelectorAll('li');
     tasks.forEach(el => el.style.display = "list-item");
+    currentNumberTask();
 });
 
 // let todoActive = todo.filter(el => el.state === true);
 btnActive.addEventListener('click', ()=> {
     todo.forEach(el => {
         if (el.state === false) {
+            // aqui genera un error si los tareas completadas ya se limpiaron
             let taskActive = document.querySelector(`li[data-id="${el.id}"]`);
             taskActive.style.display = "none";
-            // aqui genera un error si los tareas completadas ya se limpiaron
         } else {
             let taskActive = document.querySelector(`li[data-id="${el.id}"]`);
             taskActive.style.display = "list-item";
@@ -139,8 +146,8 @@ btnCompleted.addEventListener('click', () => {
         if (el.state === true) {
             let taskActive = document.querySelector(`li[data-id="${el.id}"]`);
             taskActive.style.display = "none";
-            // aqui genera un error si los tareas completadas ya se limpiaron
         } else {
+            // aqui genera un error si los tareas completadas ya se limpiaron
             let taskActive = document.querySelector(`li[data-id="${el.id}"]`);
             taskActive.style.display = "list-item";
         }
@@ -154,6 +161,7 @@ btnClearCompleted.addEventListener('click', ()=> {
             taskActive.remove();
         }
     });
+    currentNumberTask();
 });
 
 input.addEventListener('keypress', (e) => {
