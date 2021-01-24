@@ -356,4 +356,12 @@ body {
   font-family: "Josefin Sans";
 }
 
+.attribution {
+  font-size: 11px;
+  text-align: center;
+}
+.attribution__link {
+  color: #3e52a3;
+}
+
 /*# sourceMappingURL=style.css.map */
