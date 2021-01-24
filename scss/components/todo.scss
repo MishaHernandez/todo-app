@@ -1,0 +1,19 @@
+.todo {
+    &__input {
+        width: 100%;
+        padding: 1rem 2rem;
+        border: 1px solid transparent;
+        border-radius: 6px;
+        color: $dark-grayish-blue;
+    }
+
+    &__list { /* ul */
+        padding-left: 0;
+        list-style-type: none;
+
+        &-item {
+            padding: 12px 12px;
+            color: $very-dark-grayish-blue;
+        }
+    }
+}

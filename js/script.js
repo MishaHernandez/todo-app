@@ -60,25 +60,34 @@ function viewAll() {
     todo.forEach((el, i) => {
         const id = i + 1;
         const task = document.createElement('li');
+        const label = document.createElement('label');
+        const span1 = document.createElement('span');
+        const span2 = document.createElement('span');
         const checkbox = document.createElement('input');
         const button = document.createElement('button');
-
         // Render task
         task.classList.add('todo__list-item');
         task.dataset.id = id;
-        task.textContent = el.desc;
         list.appendChild(task);
+
+        label.setAttribute("for", `checkbox${id}`)
+        task.appendChild(label);
 
         checkbox.id = `checkbox${id}`;
         checkbox.classList.add('checkbox');
         checkbox.setAttribute("type", "checkbox");
         if (el.state === false) checkbox.setAttribute("checked", "");
-        task.appendChild(checkbox);
+        label.appendChild(checkbox);
+
+        span1.classList.add('fake-checkbox');
+        label.appendChild(span1);
+
+        span2.textContent = el.desc;
+        label.appendChild(span2);
 
         button.id = `btn${id}`;
         button.classList.add('button--delete');
         task.appendChild(button);
-
     });
     currentNumberTask();
 }
