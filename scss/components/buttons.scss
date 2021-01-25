@@ -5,3 +5,19 @@
         height: 100%;
     }
 }
+
+.button-delete {
+    border-style: none;
+    background-color: transparent;
+    // flex container
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img {
+        width: 65%;
+        height: 65%;
+        // no click image
+        pointer-events: none;
+    }
+}

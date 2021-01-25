@@ -9,18 +9,33 @@ const btnClearCompleted = document.getElementById('btnClearCompleted');
 // objects
 let todo = [{
         id: 1,
-        state: true,
-        desc: 'primera tarea'
+        state: false,
+        desc: 'Complete online JavaScript course'
     },
     {
         id: 2,
-        state: false,
-        desc: 'segunda tarea'
+        state: true,
+        desc: 'Jog around the park 3x'
     },
     {
         id: 3,
         state: true,
-        desc: 'tercera tarea'
+        desc: '10 minutes meditation'
+    },
+    {
+        id: 4,
+        state: true,
+        desc: 'Read for 1 hour'
+    },
+    {
+        id: 5,
+        state: true,
+        desc: 'Pick up groceries'
+    },
+    {
+        id: 6,
+        state: true,
+        desc: 'Complete Todo App on Frontend Mentor'
     }];
 
 function currentNumberTask() {
@@ -32,8 +47,12 @@ function currentNumberTask() {
 
 function addTodo() {
     const task = document.createElement('li');
+    const label = document.createElement('label');
+    const span1 = document.createElement('span');
+    const span2 = document.createElement('span');
     const checkbox = document.createElement('input');
     const button = document.createElement('button');
+    const img = document.createElement('img');
     const number = todo.length + 1;
 
     todo.push({id: number, state: true, desc: input.value});
@@ -41,36 +60,51 @@ function addTodo() {
     // Render task
     task.classList.add('todo__list-item');
     task.dataset.id = number;
-    task.textContent = todo[number - 1].desc;
     list.appendChild(task);
+
+    label.classList.add('todo__list-label');
+    label.setAttribute("for", `checkbox${number}`);
+    task.appendChild(label);
 
     checkbox.id = `checkbox${number}`;
     checkbox.classList.add('checkbox');
     checkbox.setAttribute("type", "checkbox");
-    task.appendChild(checkbox);
+    label.appendChild(checkbox);
+
+    span1.classList.add('checkbox-fake');
+    label.appendChild(span1);
+
+    span2.classList.add('description');
+    span2.textContent = todo[number - 1].desc;
+    label.appendChild(span2);
 
     button.id = `btn${number}`;
-    button.classList.add('button--delete');
+    button.classList.add('button-delete');
     task.appendChild(button);
+
+    img.setAttribute("src", "images/icon-cross.svg");
+    button.appendChild(img);
 
     currentNumberTask();
 }
 
 function viewAll() {
     todo.forEach((el, i) => {
-        const id = i + 1;
         const task = document.createElement('li');
         const label = document.createElement('label');
         const span1 = document.createElement('span');
         const span2 = document.createElement('span');
         const checkbox = document.createElement('input');
         const button = document.createElement('button');
+        const img = document.createElement('img');
+        const id = i + 1;
         // Render task
         task.classList.add('todo__list-item');
         task.dataset.id = id;
         list.appendChild(task);
 
-        label.setAttribute("for", `checkbox${id}`)
+        label.classList.add('todo__list-label');
+        label.setAttribute("for", `checkbox${id}`);
         task.appendChild(label);
 
         checkbox.id = `checkbox${id}`;
@@ -79,15 +113,19 @@ function viewAll() {
         if (el.state === false) checkbox.setAttribute("checked", "");
         label.appendChild(checkbox);
 
-        span1.classList.add('fake-checkbox');
+        span1.classList.add('checkbox-fake');
         label.appendChild(span1);
 
+        span2.classList.add('description');
         span2.textContent = el.desc;
         label.appendChild(span2);
 
         button.id = `btn${id}`;
-        button.classList.add('button--delete');
+        button.classList.add('button-delete');
         task.appendChild(button);
+
+        img.setAttribute("src", "images/icon-cross.svg");
+        button.appendChild(img);
     });
     currentNumberTask();
 }
@@ -99,7 +137,7 @@ list.addEventListener('change', e => {
     const checkbox = e.target;
     let found = false;
 
-    if (checkbox.checked) {
+    if (checkbox.matches('.checkbox') && checkbox.checked) {
         for (let i = 0; i < todo.length && found === false; i++) {
             // console.log('found');
             if (todo[i].id === parseInt(checkbox.id)) {
@@ -123,7 +161,7 @@ list.addEventListener('change', e => {
 list.addEventListener('click', e => {
     const button = e.target;
     
-    if (button.matches('.button--delete')) {
+    if (button.matches('.button-delete')) {
         button.parentElement.remove();
     }
     currentNumberTask();

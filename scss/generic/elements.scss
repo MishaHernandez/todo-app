@@ -2,6 +2,7 @@ body {
     font-family: 'Josefin Sans';
     font-size: 18px;
 
-    // test
-    background-color: bisque;
+    background-image: url('../images/bg-mobile-light.jpg');
+    background-repeat: no-repeat;
+    background-color: $very-light-grayish-blue;
 }

@@ -1,4 +1,7 @@
 .todo {
+    font-size: 12px;
+    background-color: $very-light-gray;
+
     &__input {
         width: 100%;
         padding: 1rem 2rem;
@@ -12,8 +15,54 @@
         list-style-type: none;
 
         &-item {
-            padding: 12px 12px;
+            padding: 14px 12px;
             color: $very-dark-grayish-blue;
+            // display container
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid $very-light-grayish-blue;
         }
+
+        &-label {
+            // displa container
+            display: flex;
+            align-items: center;
+        }
+    }
+}
+
+// Checkbox
+.checkbox {
+    display: none;
+
+    &-fake {
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        margin-right: 10px;
+        border: 1px solid $light-grayish-blue;
+        // position
+        position: relative;
+    }
+
+    &:checked ~ &-fake {
+        background-image: $check-background;
+        border-style: none;
+
+        &::after {
+            display: block;
+            content: url("../images/icon-check.svg");
+            // position
+            position: absolute;
+            left: 25%;
+            top: 20%;
+            transform: scale(.9);
+        }
+    }
+    &:checked ~ .description {
+        color: $light-grayish-blue;
+        text-decoration-line: line-through;
     }
 }
