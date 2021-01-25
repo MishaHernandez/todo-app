@@ -20,23 +20,21 @@
 
   <div class="todo">
     <input class="todo__input" type="text" placeholder="Create a new todo...">
-    
+
     <ul class="todo__list">
       <!-- task -->
     </ul>
 
-    <div class="todo__footer-tools">
-      <p class="paragraph"><span id="numberTasks"></span> items left</p>
-    </div>
-  
-    <div class="todo__footer-filter">
-      <button id="btnAll" class="button--filter">All</button>
-      <button id="btnActive" class="button--filter">Active</button>
-      <button id="btnCompleted" class="button--filter">Completed</button>
-    </div>
-  
-    <div class="todo__footer-tools">
-      <button id="btnClearCompleted" class="button--clear">Clear Completed</button>
+    <div class="todo-list__footer">
+      <p class="counter-item"><span id="numberTasks"></span> items left</p>
+    
+      <div class="todo-list__footer-filters">
+        <button id="btnAll" class="button-footer button-footer--filter">All</button>
+        <button id="btnActive" class="button-footer button-footer--filter">Active</button>
+        <button id="btnCompleted" class="button-footer button-footer--filter">Completed</button>
+      </div>
+    
+      <button id="btnClearCompleted" class="button-footer button-footer--clear">Clear Completed</button>
     </div>
   </div>
 

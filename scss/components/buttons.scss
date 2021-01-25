@@ -9,6 +9,7 @@
 .button-delete {
     border-style: none;
     background-color: transparent;
+    padding: 0;
     // flex container
     display: flex;
     justify-content: center;
@@ -20,4 +21,21 @@
         // no click image
         pointer-events: none;
     }
+}
+
+.button-footer {
+    border-style: none;
+    background-color: transparent;
+    color: inherit;
+    
+    &--filter {
+        font-weight: 700;
+        font-size: 14px;
+
+        &:first-child {
+            color: $bright-blue;
+        }
+    }
+    // &--clear {
+    // }
 }

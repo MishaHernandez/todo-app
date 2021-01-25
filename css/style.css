@@ -384,31 +384,59 @@ body {
 
 .todo {
   font-size: 12px;
-  background-color: #fafafa;
 }
 .todo__input {
   width: 100%;
   padding: 1rem 2rem;
+  margin-bottom: 1rem;
   border: 1px solid transparent;
   border-radius: 6px;
-  color: #777a92;
+  color: #9394a5;
 }
 .todo__list {
   /* ul */
+  margin: 0;
   padding-left: 0;
   list-style-type: none;
 }
 .todo__list-item {
-  padding: 14px 12px;
-  color: #393a4c;
+  padding: 16px 12px;
+  color: #484b6a;
+  background-color: #fafafa;
   display: flex;
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid #e4e5f1;
 }
+.todo__list-item:first-child {
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+}
 .todo__list-label {
   display: flex;
   align-items: center;
+}
+
+.todo-list__footer {
+  color: #9394a5;
+  padding: 1.23rem 12px;
+  background-color: #fafafa;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+.todo-list__footer-filters {
+  text-align: center;
+  background-color: #fafafa;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: calc(-53.8px + -16px);
+  padding: 1.15rem;
+  border-radius: 6px;
 }
 
 .checkbox {
@@ -420,7 +448,7 @@ body {
   height: 20px;
   border-radius: 50%;
   margin-right: 10px;
-  border: 1px solid #cacde8;
+  border: 1px solid #d2d3db;
   position: relative;
 }
 .checkbox:checked ~ .checkbox-fake {
@@ -436,8 +464,12 @@ body {
   transform: scale(0.9);
 }
 .checkbox:checked ~ .description {
-  color: #cacde8;
+  color: #d2d3db;
   text-decoration-line: line-through;
+}
+
+.counter-item {
+  margin: 0;
 }
 
 .button-theme {
@@ -451,6 +483,7 @@ body {
 .button-delete {
   border-style: none;
   background-color: transparent;
+  padding: 0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -459,6 +492,19 @@ body {
   width: 65%;
   height: 65%;
   pointer-events: none;
+}
+
+.button-footer {
+  border-style: none;
+  background-color: transparent;
+  color: inherit;
+}
+.button-footer--filter {
+  font-weight: 700;
+  font-size: 14px;
+}
+.button-footer--filter:first-child {
+  color: #3a7bfd;
 }
 
 .attribution {
