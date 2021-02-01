@@ -16,7 +16,7 @@
         list-style-type: none;
 
         &-item {
-            padding: 16px 12px;
+            padding: 16px 1.3rem;
             color: $very-dark-grayish-blue;
             background-color: $very-light-gray;
             // display container
@@ -41,7 +41,7 @@
 
 .todo-list__footer {
     color: $dark-grayish-blue;
-    padding: 1.23rem 12px;
+    padding: 1.23rem 1.3rem;
     background-color: $very-light-gray;
     border-bottom-left-radius: 6px;
     border-bottom-right-radius: 6px;
@@ -57,8 +57,8 @@
         position: absolute;
         left: 0;
         right: 0;
-        bottom: calc(-53.8px + -16px);
-        padding: 1.15rem;
+        bottom: calc(-48px + -16px);
+        padding: 1rem;
         border-radius: 6px;
     }
 }

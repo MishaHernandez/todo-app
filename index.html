@@ -13,33 +13,35 @@
 </head>
 <body>
 
-  <div class="header-wrapper">
-    <h1 class="title">Todo</h1>
-    <button class="button-theme"><img src="images/icon-moon.svg" alt=""></button>
-  </div>
-
-  <div class="todo">
-    <input class="todo__input" type="text" placeholder="Create a new todo...">
-
-    <ul class="todo__list">
-      <!-- task -->
-    </ul>
-
-    <div class="todo-list__footer">
-      <p class="counter-item"><span id="numberTasks"></span> items left</p>
-    
-      <div class="todo-list__footer-filters">
-        <button id="btnAll" class="button-footer button-footer--filter">All</button>
-        <button id="btnActive" class="button-footer button-footer--filter">Active</button>
-        <button id="btnCompleted" class="button-footer button-footer--filter">Completed</button>
-      </div>
-    
-      <button id="btnClearCompleted" class="button-footer button-footer--clear">Clear Completed</button>
+  <div class="container">
+    <div class="header-wrapper">
+      <h1 class="title">Todo</h1>
+      <button class="button-theme"><img src="images/icon-moon.svg" alt=""></button>
     </div>
+  
+    <div class="todo">
+      <input class="todo__input" type="text" placeholder="Create a new todo...">
+  
+      <ul class="todo__list">
+        <!-- task -->
+      </ul>
+  
+      <div class="todo-list__footer">
+        <p class="counter-item"><span id="numberTasks"></span> items left</p>
+      
+        <div class="todo-list__footer-filters">
+          <button id="btnAll" class="button-footer button-footer--filter">All</button>
+          <button id="btnActive" class="button-footer button-footer--filter">Active</button>
+          <button id="btnCompleted" class="button-footer button-footer--filter">Completed</button>
+        </div>
+      
+        <button id="btnClearCompleted" class="button-footer button-footer--clear">Clear Completed</button>
+      </div>
+    </div>
+  
+  
+    <p class="todo__footer-paragraph">Drag and drop to reorder list</p>
   </div>
-
-
-  <p class="paragraph">Drag and drop to reorder list</p>
 
   <div class="attribution">
     Challenge by <a class="attribution__link" href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 

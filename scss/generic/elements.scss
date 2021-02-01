@@ -5,4 +5,12 @@ body {
     background-image: url('../images/bg-mobile-light.jpg');
     background-repeat: no-repeat;
     background-color: $very-light-grayish-blue;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container {
+    width: 87%;
 }
