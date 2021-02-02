@@ -416,8 +416,13 @@ body {
   padding-left: 0;
   list-style-type: none;
 }
+@media (min-width: 600px) {
+  .todo__list {
+    font-size: 1.1rem;
+  }
+}
 .todo__list-item {
-  padding: 16px 1.3rem;
+  padding: 1rem 1.3rem;
   color: #484b6a;
   background-color: #fafafa;
   display: flex;
@@ -428,6 +433,14 @@ body {
 .todo__list-item:first-child {
   border-top-left-radius: 6px;
   border-top-right-radius: 6px;
+}
+@media (min-width: 600px) {
+  .todo__list-item {
+    padding: 1.25rem 1.5rem;
+  }
+  .todo__list-item:hover .button-delete {
+    visibility: visible;
+  }
 }
 .todo__list-label {
   display: flex;
@@ -445,6 +458,14 @@ body {
   align-items: center;
   position: relative;
 }
+@media (min-width: 600px) {
+  .todo-list__footer {
+    padding: 1.05rem 1.5rem;
+  }
+}
+.todo-list__footer .counter-item {
+  font-size: 14px;
+}
 .todo-list__footer-filters {
   text-align: center;
   background-color: #fafafa;
@@ -454,6 +475,15 @@ body {
   bottom: calc(-48px + -16px);
   padding: 1rem;
   border-radius: 6px;
+}
+@media (min-width: 600px) {
+  .todo-list__footer-filters {
+    padding: 0;
+    position: relative;
+    left: auto;
+    right: auto;
+    bottom: auto;
+  }
 }
 
 .checkbox {
@@ -468,6 +498,12 @@ body {
   border: 1px solid #d2d3db;
   position: relative;
 }
+@media (min-width: 600px) {
+  .checkbox-fake {
+    width: 24px;
+    height: 24px;
+  }
+}
 .checkbox:checked ~ .checkbox-fake {
   background-image: linear-gradient(120deg, #57ddff, #c058f3);
   border-style: none;
@@ -476,9 +512,16 @@ body {
   display: block;
   content: url("../images/icon-check.svg");
   position: absolute;
-  left: 25%;
   top: 20%;
+  left: 25%;
   transform: scale(0.9);
+}
+@media (min-width: 600px) {
+  .checkbox:checked ~ .checkbox-fake::after {
+    top: 8%;
+    left: 28%;
+    transform: scale(1);
+  }
 }
 .checkbox:checked ~ .description {
   color: #d2d3db;
@@ -510,6 +553,17 @@ body {
   height: 65%;
   pointer-events: none;
 }
+@media (min-width: 600px) {
+  .button-delete img {
+    width: 100%;
+    height: 100%;
+  }
+}
+@media (min-width: 600px) {
+  .button-delete {
+    visibility: hidden;
+  }
+}
 
 .button-footer {
   border-style: none;
@@ -522,6 +576,9 @@ body {
 }
 .button-footer--filter:first-child {
   color: #3a7bfd;
+}
+.button-footer--clear {
+  font-size: 14px;
 }
 
 .todo__footer-paragraph {

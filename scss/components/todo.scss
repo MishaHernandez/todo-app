@@ -14,9 +14,12 @@
         margin: 0;
         padding-left: 0;
         list-style-type: none;
+        @include tablet-portrait-up {
+            font-size: 1.1rem;
+        }
 
         &-item {
-            padding: 16px 1.3rem;
+            padding: 1rem 1.3rem;
             color: $very-dark-grayish-blue;
             background-color: $very-light-gray;
             // display container
@@ -29,10 +32,17 @@
                 border-top-left-radius: 6px;
                 border-top-right-radius: 6px;
             }
+
+            @include tablet-portrait-up {
+                padding: 1.25rem 1.5rem;
+
+                &:hover .button-delete {
+                    visibility: visible;
+                }
+            }
         }
 
         &-label {
-            // displa container
             display: flex;
             align-items: center;
         }
@@ -51,6 +61,14 @@
     align-items: center;
 
     position: relative;
+    @include tablet-portrait-up {
+        padding: 1.05rem 1.5rem;
+    }
+
+    .counter-item {
+        font-size: 14px;
+    }
+
     &-filters {
         text-align: center;
         background-color: $very-light-gray;
@@ -60,6 +78,14 @@
         bottom: calc(-48px + -16px);
         padding: 1rem;
         border-radius: 6px;
+
+        @include tablet-portrait-up {
+            padding: 0;
+            position: relative;
+            left: auto;
+            right: auto;
+            bottom: auto;
+        }
     }
 }
 
@@ -76,6 +102,10 @@
         border: 1px solid $light-grayish-blue;
         // position
         position: relative;
+        @include tablet-portrait-up {
+            width: 24px;
+            height: 24px;
+        }
     }
 
     &:checked ~ &-fake {
@@ -87,9 +117,14 @@
             content: url("../images/icon-check.svg");
             // position
             position: absolute;
-            left: 25%;
             top: 20%;
+            left: 25%;
             transform: scale(.9);
+            @include tablet-portrait-up {
+                top: 8%;
+                left: 28%;
+                transform: scale(1);
+            }
         }
     }
     &:checked ~ .description {

@@ -18,8 +18,15 @@
     img {
         width: 65%;
         height: 65%;
-        // no click image
         pointer-events: none;
+        @include tablet-portrait-up {
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    @include tablet-portrait-up {
+        visibility: hidden;
     }
 }
 
@@ -36,6 +43,7 @@
             color: $bright-blue;
         }
     }
-    // &--clear {
-    // }
+    &--clear {
+        font-size: 14px;
+    }
 }
