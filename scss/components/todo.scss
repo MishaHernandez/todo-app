@@ -1,13 +1,50 @@
 .todo {
     font-size: 12px;
 
-    &__input {
+    &__input-wrapper {
         width: 100%;
-        padding: 1rem 2rem;
+        padding: 14px 1.25rem;
         margin-bottom: 1rem;
         border: 1px solid transparent;
         border-radius: 6px;
         color: $dark-grayish-blue;
+        background-color: $very-light-gray;
+
+        display: flex;
+        align-items: center;
+
+        &::before {
+            content: "";
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            margin-right: 10px;
+            border: 1px solid $light-grayish-blue;
+
+            @include tablet-portrait-up {
+                width: 24px;
+                height: 24px;
+                margin-right: 1.25rem;
+            }
+        }
+
+        @include tablet-portrait-up {
+            font-size: 1.1rem;
+            padding: 1.25rem 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+    }
+
+    &__input {
+        width: 100%;
+        border-style: none;
+        padding: 0;
+        background-color: $very-light-gray;
+
+        &:focus {
+            outline: none;
+        }
     }
 
     &__list { /* ul */
@@ -105,6 +142,7 @@
         @include tablet-portrait-up {
             width: 24px;
             height: 24px;
+            margin-right: 1.25rem;
         }
     }
 
