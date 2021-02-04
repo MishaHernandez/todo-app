@@ -7,6 +7,9 @@
     @include tablet-portrait-up {
         height: auto;
     }
+    @include desktop-up {
+        cursor: pointer;
+    }
     img {
         width: 100%;
         height: 100%;
@@ -21,7 +24,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
-
+    @include tablet-portrait-up { visibility: hidden; }
+    @include desktop-up { cursor: pointer; }
+    
     img {
         width: 65%;
         height: 65%;
@@ -30,10 +35,6 @@
             width: 100%;
             height: 100%;
         }
-    }
-
-    @include tablet-portrait-up {
-        visibility: hidden;
     }
 }
 
@@ -45,6 +46,15 @@
     &--filter {
         font-weight: 700;
         font-size: 14px;
+        &:active, &:focus {
+            color: $bright-blue;
+        }
+        @include desktop-up {
+            cursor: pointer;
+            &:hover {
+                color: $very-dark-grayish-blue-2-dt;
+            }
+        }
 
         &:first-child {
             color: $bright-blue;
@@ -54,6 +64,12 @@
         font-size: 12px;
         @include tablet-portrait-up {
             font-size: 14px;
+        }
+        @include desktop-up {
+            cursor: pointer;
+            &:hover {
+                color: $very-dark-grayish-blue-1-dt;
+            }
         }
     }
 }

@@ -81,6 +81,12 @@
         &-label {
             display: flex;
             align-items: center;
+            
+            .description {
+                @include desktop-up {
+                    cursor: pointer;
+                }
+            }
         }
     }
 }
@@ -135,17 +141,24 @@
 
     &-fake {
         display: inline-block;
-        width: 20px;
-        height: 20px;
+        width: 1.25rem;
+        height: 1.25rem;
         border-radius: 50%;
         margin-right: 10px;
         border: 1px solid $light-grayish-blue;
         // position
         position: relative;
         @include tablet-portrait-up {
-            width: 24px;
-            height: 24px;
+            width: 1.5rem;
+            height: 1.5rem;
             margin-right: 1.25rem;
+        }
+        @include desktop-up {
+            cursor: pointer;
+
+            // &:hover {
+                
+            // }
         }
     }
 
