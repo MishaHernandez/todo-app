@@ -132,28 +132,15 @@ function viewAll() {
 
 document.addEventListener('DOMContentLoaded', viewAll);
 
-// Checked task
+// Modify task state
 list.addEventListener('change', e => {
     const checkbox = e.target;
-    let found = false;
+    const elemId = checkbox.parentElement.parentElement.dataset.id - 1;
 
     if (checkbox.matches('.checkbox') && checkbox.checked) {
-        for (let i = 0; i < todo.length && found === false; i++) {
-            // console.log('found');
-            if (todo[i].id === parseInt(checkbox.id)) {
-                todo[i].state = false;
-                found = true;
-            }
-        }
-    }
-    else {
-        for (let i = 0; i < todo.length && found === false; i++) {
-            // console.log('found');
-            if (todo[i].id === parseInt(checkbox.id)) {
-                todo[i].state = true;
-                found = true;
-            }
-        }
+        todo[elemId].state = false;
+    } else {
+        todo[elemId].state = true;
     }
 });
 
