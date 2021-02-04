@@ -156,7 +156,7 @@ list.addEventListener('click', e => {
 
 btnAll.addEventListener('click', ()=> {
     const tasks = document.querySelectorAll('li');
-    tasks.forEach(el => el.style.display = "list-item");
+    tasks.forEach(el => el.style.display = "flex");
     currentNumberTask();
 });
 
@@ -169,7 +169,7 @@ btnActive.addEventListener('click', ()=> {
             taskActive.style.display = "none";
         } else {
             let taskActive = document.querySelector(`li[data-id="${el.id}"]`);
-            taskActive.style.display = "list-item";
+            taskActive.style.display = "flex";
         }
     });
 });
@@ -183,7 +183,7 @@ btnCompleted.addEventListener('click', () => {
         } else {
             // aqui genera un error si los tareas completadas ya se limpiaron
             let taskActive = document.querySelector(`li[data-id="${el.id}"]`);
-            taskActive.style.display = "list-item";
+            taskActive.style.display = "flex";
         }
     });
 });
