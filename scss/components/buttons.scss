@@ -46,9 +46,6 @@
     &--filter {
         font-weight: 700;
         font-size: 14px;
-        // &:active, &:focus {
-        //     color: $bright-blue;
-        // }
         @include desktop-up {
             cursor: pointer;
             &:hover {

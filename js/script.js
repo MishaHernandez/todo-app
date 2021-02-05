@@ -60,6 +60,7 @@ function addTodo() {
     // Render task
     task.classList.add('todo__list-item');
     task.dataset.id = number;
+    task.dataset.state = true;
     list.appendChild(task);
 
     label.classList.add('todo__list-label');
@@ -110,7 +111,12 @@ function viewAll() {
         checkbox.id = `checkbox${id}`;
         checkbox.classList.add('checkbox');
         checkbox.setAttribute("type", "checkbox");
-        if (el.state === false) checkbox.setAttribute("checked", "");
+        if (el.state === false) {
+            checkbox.setAttribute("checked", "");
+            task.dataset.state = false;
+        } else {
+            task.dataset.state = true;
+        }
         label.appendChild(checkbox);
 
         span1.classList.add('checkbox-fake');
@@ -138,14 +144,16 @@ document.addEventListener('DOMContentLoaded', ()=> {
 // Modify task state
 list.addEventListener('change', e => {
     const checkbox = e.target;
-    const elemId = parseInt(checkbox.parentElement.parentElement.dataset.id);
+    const task = checkbox.parentElement.parentElement;
 
-    const task = todo.findIndex(elem => elem.id === elemId)
+    const taskIndex = todo.findIndex(elem => elem.id === parseInt(task.dataset.id))
 
     if (checkbox.matches('.checkbox') && checkbox.checked) {
-        todo[task].state = false;
+        todo[taskIndex].state = false;
+        task.dataset.state = false;
     } else {
-        todo[task].state = true;
+        todo[taskIndex].state = true;
+        task.dataset.state = true;
     }
 });
 
@@ -175,7 +183,9 @@ btnAll.addEventListener('click', ()=> {
 
     const tasks = document.querySelectorAll('li');
 
-    tasks.forEach(el => el.style.display = "flex");
+    tasks.forEach(task => {
+        task.classList.remove('js-hideTasks');
+    });
     currentNumberTask();
 });
 
@@ -184,33 +194,31 @@ btnActive.addEventListener('click', ()=> {
     btnAll.classList.remove('js-activeFilter');
     btnCompleted.classList.remove('js-activeFilter');
 
-    todo.forEach(el => {
-        if (el.state === false) {
-            // aqui genera un error si los tareas completadas ya se limpiaron
-            let taskActive = document.querySelector(`li[data-id="${el.id}"]`);
-            taskActive.style.display = "none";
+    const tasks = document.querySelectorAll('li');
+
+    tasks.forEach(task => {
+        if (task.dataset.state === "true") {
+            task.classList.remove('js-hideTasks');
         } else {
-            let taskActive = document.querySelector(`li[data-id="${el.id}"]`);
-            taskActive.style.display = "flex";
+            task.classList.add('js-hideTasks');
         }
-    });
+    })
 });
 
 btnCompleted.addEventListener('click', () => {
     btnCompleted.classList.add('js-activeFilter');
     btnAll.classList.remove('js-activeFilter');
     btnActive.classList.remove('js-activeFilter');
-    
-    todo.forEach(el => {
-        if (el.state === true) {
-            let taskActive = document.querySelector(`li[data-id="${el.id}"]`);
-            taskActive.style.display = "none";
+
+    const tasks = document.querySelectorAll('li');
+
+    tasks.forEach(task => {
+        if (task.dataset.state === "true") {
+            task.classList.add('js-hideTasks');
         } else {
-            // aqui genera un error si los tareas completadas ya se limpiaron
-            let taskActive = document.querySelector(`li[data-id="${el.id}"]`);
-            taskActive.style.display = "flex";
+            task.classList.remove('js-hideTasks');
         }
-    });
+    })
 });
 // =========================================================================== END FILTERS
 

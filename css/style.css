@@ -702,4 +702,8 @@ body {
   color: #3a7bfd;
 }
 
+.js-hideTasks {
+  display: none;
+}
+
 /*# sourceMappingURL=style.css.map */
