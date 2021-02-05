@@ -149,10 +149,18 @@ list.addEventListener('change', e => {
 
 // Deleted task
 list.addEventListener('click', e => {
-    const button = e.target;
+    const closeButton = e.target;
+    let flag = false;
     
-    if (button.matches('.button-delete')) {
-        button.parentElement.remove();
+    if (closeButton.matches('.button-delete')) {
+        closeButton.parentElement.remove();
+        
+        for (let i = 0; i < todo.length && flag === false; i++) {
+            if (parseInt(closeButton.parentElement.dataset.id) === todo[i].id) {
+                todo.splice(i, 1);
+                flag = true;
+            }
+        }
     }
     currentNumberTask();
 })
