@@ -652,9 +652,6 @@ body {
   font-weight: 700;
   font-size: 14px;
 }
-.button-footer--filter:active, .button-footer--filter:focus {
-  color: #3a7bfd;
-}
 @media (min-width: 1200px) {
   .button-footer--filter {
     cursor: pointer;
@@ -662,9 +659,6 @@ body {
   .button-footer--filter:hover {
     color: #393a4c;
   }
-}
-.button-footer--filter:first-child {
-  color: #3a7bfd;
 }
 .button-footer--clear {
   font-size: 12px;
@@ -702,6 +696,10 @@ body {
 }
 .attribution__link {
   color: #3e52a3;
+}
+
+.js-activeFilter {
+  color: #3a7bfd;
 }
 
 /*# sourceMappingURL=style.css.map */

@@ -4,7 +4,7 @@ const list = document.querySelector('.todo__list');
 // buttons
 const btnAll = document.getElementById('btnAll');
 const btnActive = document.getElementById('btnActive');
-const btnComplete = document.getElementById('btnComplete');
+const btnCompleted = document.getElementById('btnCompleted');
 const btnClearCompleted = document.getElementById('btnClearCompleted');
 // objects
 let todo = [{
@@ -130,7 +130,10 @@ function viewAll() {
     currentNumberTask();
 }
 
-document.addEventListener('DOMContentLoaded', viewAll);
+document.addEventListener('DOMContentLoaded', ()=> {
+    viewAll();
+    btnAll.click();
+});
 
 // Modify task state
 list.addEventListener('change', e => {
@@ -154,14 +157,23 @@ list.addEventListener('click', e => {
     currentNumberTask();
 })
 
+// =========================================================================== FILTERS
 btnAll.addEventListener('click', ()=> {
+    btnAll.classList.add('js-activeFilter');
+    btnActive.classList.remove('js-activeFilter');
+    btnCompleted.classList.remove('js-activeFilter');
+
     const tasks = document.querySelectorAll('li');
+
     tasks.forEach(el => el.style.display = "flex");
     currentNumberTask();
 });
 
-// let todoActive = todo.filter(el => el.state === true);
 btnActive.addEventListener('click', ()=> {
+    btnActive.classList.add('js-activeFilter');
+    btnAll.classList.remove('js-activeFilter');
+    btnCompleted.classList.remove('js-activeFilter');
+
     todo.forEach(el => {
         if (el.state === false) {
             // aqui genera un error si los tareas completadas ya se limpiaron
@@ -174,8 +186,11 @@ btnActive.addEventListener('click', ()=> {
     });
 });
 
-// let todoCompleted = todo.filter(el => el.state === false);
 btnCompleted.addEventListener('click', () => {
+    btnCompleted.classList.add('js-activeFilter');
+    btnAll.classList.remove('js-activeFilter');
+    btnActive.classList.remove('js-activeFilter');
+    
     todo.forEach(el => {
         if (el.state === true) {
             let taskActive = document.querySelector(`li[data-id="${el.id}"]`);
@@ -187,14 +202,15 @@ btnCompleted.addEventListener('click', () => {
         }
     });
 });
+// =========================================================================== END FILTERS
 
 btnClearCompleted.addEventListener('click', ()=> {
-    todo.forEach(el => {
-        if (el.state === false) {
-            let taskActive = document.querySelector(`li[data-id="${el.id}"]`);
-            taskActive.remove();
+    for (let i = todo.length - 1; i >= 0; i--) {
+        if (todo[i].state === false) {
+            document.querySelector(`li[data-id="${todo[i].id}"]`).remove();
+            todo.splice(i, 1);
         }
-    });
+    }
     currentNumberTask();
 });
 
