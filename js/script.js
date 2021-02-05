@@ -38,11 +38,21 @@ let todo = [{
         desc: 'Complete Todo App on Frontend Mentor'
     }];
 
-function currentNumberTask() {
-    const items = document.querySelectorAll('.todo__list-item');
+function currentNumberTask(filter) {
     const numberTasks = document.getElementById('numberTasks');
-    
-    numberTasks.textContent = items.length;
+
+    if (filter === "active") {
+        const items = document.querySelectorAll('li[data-state="true"]');
+        numberTasks.textContent = items.length;
+
+    } else if (filter === "completed") {
+        const items = document.querySelectorAll('li[data-state="false"]');
+        numberTasks.textContent = items.length;
+
+    } else {
+        const items = document.querySelectorAll('.todo__list-item');
+        numberTasks.textContent = items.length;
+    }
 }
 
 function addTodo() {
@@ -186,7 +196,7 @@ btnAll.addEventListener('click', ()=> {
     tasks.forEach(task => {
         task.classList.remove('js-hideTasks');
     });
-    currentNumberTask();
+    currentNumberTask('all');
 });
 
 btnActive.addEventListener('click', ()=> {
@@ -203,6 +213,7 @@ btnActive.addEventListener('click', ()=> {
             task.classList.add('js-hideTasks');
         }
     })
+    currentNumberTask('active');
 });
 
 btnCompleted.addEventListener('click', () => {
@@ -219,6 +230,7 @@ btnCompleted.addEventListener('click', () => {
             task.classList.remove('js-hideTasks');
         }
     })
+    currentNumberTask('completed');
 });
 // =========================================================================== END FILTERS
 
