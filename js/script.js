@@ -138,12 +138,14 @@ document.addEventListener('DOMContentLoaded', ()=> {
 // Modify task state
 list.addEventListener('change', e => {
     const checkbox = e.target;
-    const elemId = checkbox.parentElement.parentElement.dataset.id - 1;
+    const elemId = parseInt(checkbox.parentElement.parentElement.dataset.id);
+
+    const task = todo.findIndex(elem => elem.id === elemId)
 
     if (checkbox.matches('.checkbox') && checkbox.checked) {
-        todo[elemId].state = false;
+        todo[task].state = false;
     } else {
-        todo[elemId].state = true;
+        todo[task].state = true;
     }
 });
 
@@ -154,7 +156,7 @@ list.addEventListener('click', e => {
     
     if (closeButton.matches('.button-delete')) {
         closeButton.parentElement.remove();
-        
+
         for (let i = 0; i < todo.length && flag === false; i++) {
             if (parseInt(closeButton.parentElement.dataset.id) === todo[i].id) {
                 todo.splice(i, 1);
