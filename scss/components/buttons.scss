@@ -1,7 +1,11 @@
-.button-theme {
-    display: block;
+%button {
     border-style: none;
     background-color: transparent;
+}
+
+.button-theme {
+    display: block;
+    @extend %button;
     width: auto;
     height: 1.25rem;
     @include tablet-portrait-up {
@@ -17,8 +21,7 @@
 }
 
 .button-delete {
-    border-style: none;
-    background-color: transparent;
+    @extend %button;
     padding: 0;
     // flex container
     display: flex;
@@ -39,8 +42,7 @@
 }
 
 .button-footer {
-    border-style: none;
-    background-color: transparent;
+    @extend %button;
     color: inherit;
     
     &--filter {

@@ -1,11 +1,11 @@
 .header-wrapper {
     max-width: 33.75rem;
+    margin-top: 0;
     margin-bottom: 2.1rem;
     // flex container
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 0;
     @include tablet-portrait-up {
         margin-bottom: 2.3rem;
     }
