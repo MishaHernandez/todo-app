@@ -529,8 +529,15 @@ body {
   .todo__list-item {
     padding: 1.25rem 1.5rem;
   }
+}
+@media (min-width: 1200px) {
   .todo__list-item:hover .button-delete {
-    visibility: visible;
+    opacity: 1;
+    transition: opacity 0.5s;
+  }
+  .todo__list-item:hover .checkbox-fake {
+    border: 1px solid #57ddff;
+    transition: border 0.5s;
   }
 }
 .todo__list-label {
@@ -682,7 +689,8 @@ body {
 }
 @media (min-width: 600px) {
   .button-delete {
-    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.5s;
   }
 }
 @media (min-width: 1200px) {
@@ -704,6 +712,7 @@ body {
 
 .button-footer {
   color: inherit;
+  transition: color 0.5s;
 }
 .button-footer--filter {
   font-weight: 700;
@@ -715,6 +724,7 @@ body {
   }
   .button-footer--filter:hover {
     color: var(--font-todo-footer-hover);
+    transition: color 0.5s;
   }
 }
 .button-footer--clear {

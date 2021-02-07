@@ -32,7 +32,8 @@
     align-items: center;
 
     @include tablet-portrait-up {
-        visibility: hidden;
+        opacity: 0;
+        transition: opacity .5s;
     }
 
     @include desktop-up {
@@ -54,6 +55,7 @@
 .button-footer {
     @extend %button;
     color: inherit;
+    transition: color .5s;
 
     &--filter {
         font-weight: 700;
@@ -64,6 +66,7 @@
 
             &:hover {
                 color: var(--font-todo-footer-hover);
+                transition: color .5s;
             }
         }
     }

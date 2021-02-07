@@ -85,9 +85,15 @@
 
             @include tablet-portrait-up {
                 padding: 1.25rem 1.5rem;
-
+            }
+            @include desktop-up {
                 &:hover .button-delete {
-                    visibility: visible;
+                    opacity: 1;
+                    transition: opacity .5s;
+                }
+                &:hover .checkbox-fake {
+                    border: 1px solid hsl(192, 100%, 67%);
+                    transition: border .5s;
                 }
             }
         }
