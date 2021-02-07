@@ -2,7 +2,7 @@ body {
     font-family: 'Josefin Sans';
     font-size: 18px;
 
-    background: url('../images/bg-mobile-light.jpg') no-repeat $very-light-grayish-blue;
+    background: var(--hero-image-mobile) no-repeat var(--bg-body);
     background-size: 100% 200px;
 
     display: flex;
@@ -10,8 +10,10 @@ body {
     align-items: center;
 
     @include tablet-portrait-up {
-        background: url('../images/bg-desktop-light.jpg') no-repeat center 0 / auto;
+        background: var(--hero-image-desktop) no-repeat var(--bg-body) center 0 / auto;
     }
+
+    transition: background-color .5s, color .5s;
 }
 
 .container {

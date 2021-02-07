@@ -1,54 +1,59 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light-theme">
+
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- displays site properly based on user's device -->
 
   <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
 
   <link rel="stylesheet" href="css/style.css">
-  
+
   <title>Frontend Mentor | Todo app</title>
 
 </head>
+
 <body>
 
   <div class="container">
     <div class="header-wrapper">
       <h1 class="title">Todo</h1>
-      <button class="button-theme"><img src="images/icon-moon.svg" alt=""></button>
+      <button id="btnTheme" class="button-theme"><img data-img="moon" src="images/icon-moon.svg" alt=""></button>
     </div>
-  
+
     <div class="todo">
       <div class="todo__input-wrapper">
         <input class="todo__input" type="text" placeholder="Create a new todo...">
       </div>
-  
+
       <ul class="todo__list">
         <!-- task -->
       </ul>
-  
+
       <div class="todo-list__footer">
         <p class="counter-item"><span id="numberTasks"></span> items left</p>
-      
+
         <div class="todo-list__footer-filters">
           <button id="btnAll" class="button-footer button-footer--filter">All</button>
           <button id="btnActive" class="button-footer button-footer--filter">Active</button>
           <button id="btnCompleted" class="button-footer button-footer--filter">Completed</button>
         </div>
-      
+
         <button id="btnClearCompleted" class="button-footer button-footer--clear">Clear Completed</button>
       </div>
     </div>
-  
+
     <p class="todo__footer-paragraph">Drag and drop to reorder list</p>
   </div>
 
   <div class="attribution">
-    Challenge by <a class="attribution__link" href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+    Challenge by <a class="attribution__link" href="https://www.frontendmentor.io?ref=challenge"
+      target="_blank">Frontend Mentor</a>.
     Coded by <a class="attribution__link" href="#">Your Name Here</a>.
   </div>
 
   <script src="js/script.js"></script>
 </body>
+
 </html>

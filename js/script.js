@@ -2,6 +2,7 @@
 const input = document.querySelector('.todo__input');
 const list = document.querySelector('.todo__list');
 // buttons
+const btnTheme = document.getElementById('btnTheme');
 const btnAll = document.getElementById('btnAll');
 const btnActive = document.getElementById('btnActive');
 const btnCompleted = document.getElementById('btnCompleted');
@@ -36,7 +37,8 @@ let todo = [{
         id: 6,
         state: true,
         desc: 'Complete Todo App on Frontend Mentor'
-    }];
+    }
+];
 
 function currentNumberTask(filter) {
     const numberTasks = document.getElementById('numberTasks');
@@ -65,7 +67,11 @@ function addTodo() {
     const img = document.createElement('img');
     const number = todo.length + 1;
 
-    todo.push({id: number, state: true, desc: input.value});
+    todo.push({
+        id: number,
+        state: true,
+        desc: input.value
+    });
 
     // Render task
     task.classList.add('todo__list-item');
@@ -146,7 +152,7 @@ function viewAll() {
     currentNumberTask();
 }
 
-document.addEventListener('DOMContentLoaded', ()=> {
+document.addEventListener('DOMContentLoaded', () => {
     viewAll();
     btnAll.click();
 });
@@ -171,7 +177,7 @@ list.addEventListener('change', e => {
 list.addEventListener('click', e => {
     const closeButton = e.target;
     let flag = false;
-    
+
     if (closeButton.matches('.button-delete')) {
         closeButton.parentElement.remove();
 
@@ -183,10 +189,10 @@ list.addEventListener('click', e => {
         }
     }
     currentNumberTask();
-})
+});
 
 // =========================================================================== FILTERS
-btnAll.addEventListener('click', ()=> {
+btnAll.addEventListener('click', () => {
     btnAll.classList.add('js-activeFilter');
     btnActive.classList.remove('js-activeFilter');
     btnCompleted.classList.remove('js-activeFilter');
@@ -199,7 +205,7 @@ btnAll.addEventListener('click', ()=> {
     currentNumberTask('all');
 });
 
-btnActive.addEventListener('click', ()=> {
+btnActive.addEventListener('click', () => {
     btnActive.classList.add('js-activeFilter');
     btnAll.classList.remove('js-activeFilter');
     btnCompleted.classList.remove('js-activeFilter');
@@ -234,7 +240,7 @@ btnCompleted.addEventListener('click', () => {
 });
 // =========================================================================== END FILTERS
 
-btnClearCompleted.addEventListener('click', ()=> {
+btnClearCompleted.addEventListener('click', () => {
     for (let i = todo.length - 1; i >= 0; i--) {
         if (todo[i].state === false) {
             document.querySelector(`li[data-id="${todo[i].id}"]`).remove();
@@ -242,6 +248,21 @@ btnClearCompleted.addEventListener('click', ()=> {
         }
     }
     currentNumberTask();
+});
+
+btnTheme.addEventListener('click', () => {
+    const imageTheme = document.querySelector('.button-theme img');
+    // const imageHero = document.querySelector('.')
+    if (imageTheme.dataset.img === "moon") {
+        document.documentElement.setAttribute('data-theme', 'dark-theme');
+        imageTheme.setAttribute('src', 'images/icon-sun.svg');
+        imageTheme.dataset.img = "sun";
+    } else {
+        document.documentElement.setAttribute('data-theme', 'light-theme');
+        imageTheme.setAttribute('src', 'images/icon-moon.svg');
+        imageTheme.dataset.img = "moon";
+    }
+
 });
 
 input.addEventListener('keypress', (e) => {
