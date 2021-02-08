@@ -500,6 +500,8 @@ body {
 }
 .todo__list {
   /* ul */
+  height: auto;
+  /* animation test */
   margin: 0;
   padding-left: 0;
   list-style-type: none;
@@ -512,6 +514,7 @@ body {
   }
 }
 .todo__list-item {
+  height: auto;
   padding: 1rem 1.3rem;
   color: var(--font-todo-item);
   background-color: var(--bg-todo);
@@ -687,15 +690,11 @@ body {
   justify-content: center;
   align-items: center;
 }
-@media (min-width: 600px) {
-  .button-delete {
-    opacity: 0;
-    transition: opacity 0.5s;
-  }
-}
 @media (min-width: 1200px) {
   .button-delete {
     cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.5s;
   }
 }
 .button-delete img {
@@ -771,6 +770,99 @@ body {
 
 .js-hideTasks {
   display: none;
+}
+
+.js-removed-item {
+  -webkit-animation: removed-item-animation 0.5s cubic-bezier(0.65, -0.02, 0.72, 0.29);
+  animation: removed-item-animation 0.5s cubic-bezier(0.65, -0.02, 0.72, 0.29);
+}
+
+.js-add-item {
+  -webkit-animation: added-item-animation 0.8s cubic-bezier(0.29, 0.54, 0.55, 0.78);
+  animation: added-item-animation 0.8s cubic-bezier(0.29, 0.54, 0.55, 0.78);
+}
+
+@-webkit-keyframes removed-item-animation {
+  0% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  30% {
+    opacity: 1;
+    transform: translateX(-50px);
+    transform: scale(0.9);
+  }
+  50% {
+    opacity: 1;
+    transform: translateX(-400px);
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-800px);
+  }
+}
+@keyframes removed-item-animation {
+  0% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  30% {
+    opacity: 1;
+    transform: translateX(-50px);
+    transform: scale(0.9);
+  }
+  50% {
+    opacity: 1;
+    transform: translateX(-400px);
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-800px);
+  }
+}
+@-webkit-keyframes added-item-animation {
+  0% {
+    opacity: 0;
+    transform: translateX(-200px);
+  }
+  30% {
+    opacity: 1;
+    transform: translateX(-100px);
+    transform: scale(0.9);
+  }
+  50% {
+    opacity: 1;
+    transform: translateX(-50px);
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+    transform: scale(1);
+  }
+}
+@keyframes added-item-animation {
+  0% {
+    opacity: 0;
+    transform: translateX(-200px);
+  }
+  30% {
+    opacity: 1;
+    transform: translateX(-100px);
+    transform: scale(0.9);
+  }
+  50% {
+    opacity: 1;
+    transform: translateX(-50px);
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+    transform: scale(1);
+  }
 }
 
 /*# sourceMappingURL=style.css.map */

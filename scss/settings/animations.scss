@@ -1,0 +1,91 @@
+// ======================================= deleted animation
+@-webkit-keyframes removed-item-animation {
+    0% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    30% {
+        opacity: 1;
+        transform: translateX(-50px);
+        transform: scale(.9);
+    }
+
+    50% {
+        opacity: 1;
+        transform: translateX(-400px);
+        transform: scale(.9);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateX(-800px);
+    }
+}
+@keyframes removed-item-animation {
+    0% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    30% {
+        opacity: 1;
+        transform: translateX(-50px);
+        transform: scale(.9);
+    }
+
+    50% {
+        opacity: 1;
+        transform: translateX(-400px);
+        transform: scale(.9);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateX(-800px);
+    }
+}
+// ======================================= added animation
+@-webkit-keyframes added-item-animation {
+    0% {
+        opacity: 0;
+        transform: translateX(-200px);
+    }
+    30% {
+        opacity: 1;
+        transform: translateX(-100px);
+        transform: scale(.9);
+    }
+    50% {
+        opacity: 1;
+        transform: translateX(-50px);
+        transform: scale(.9);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+        transform: scale(1);
+    }
+}
+
+@keyframes added-item-animation {
+    0% {
+        opacity: 0;
+        transform: translateX(-200px);
+    }
+    30% {
+        opacity: 1;
+        transform: translateX(-100px);
+        transform: scale(.9);
+    }
+    50% {
+        opacity: 1;
+        transform: translateX(-50px);
+        transform: scale(.9);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+        transform: scale(1);
+    }
+}

@@ -78,6 +78,7 @@ function addTodo() {
     task.dataset.id = number;
     task.dataset.state = true;
     list.appendChild(task);
+    task.classList.add('js-add-item'); /* effect added after insert */
 
     label.classList.add('todo__list-label');
     label.setAttribute("for", `checkbox${number}`);
@@ -101,7 +102,7 @@ function addTodo() {
 
     img.setAttribute("src", "images/icon-cross.svg");
     button.appendChild(img);
-
+    
     currentNumberTask();
 }
 
@@ -179,7 +180,11 @@ list.addEventListener('click', e => {
     let flag = false;
 
     if (closeButton.matches('.button-delete')) {
-        closeButton.parentElement.remove();
+        closeButton.parentElement.classList.remove('js-add-item');
+        closeButton.parentElement.classList.add('js-removed-item');
+        setTimeout(() => {
+            closeButton.parentElement.remove();
+        }, 500);
 
         for (let i = 0; i < todo.length && flag === false; i++) {
             if (parseInt(closeButton.parentElement.dataset.id) === todo[i].id) {
@@ -269,5 +274,6 @@ input.addEventListener('keypress', (e) => {
     if (e.keyCode === 13) {
         e.preventDefault();
         addTodo();
+        input.value = "";
     }
 });
