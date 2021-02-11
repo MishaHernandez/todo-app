@@ -68,7 +68,7 @@
         }
 
         &-item {
-            height: auto;
+            max-height: 65px;
             padding: 1rem 1.3rem;
             color: var(--font-todo-item);
             background-color: var(--bg-todo);
