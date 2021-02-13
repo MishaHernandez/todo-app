@@ -39,7 +39,7 @@ let todo = [{
         desc: 'Complete Todo App on Frontend Mentor'
     }
 ];
-
+// ===========================================================================
 function currentNumberTask(filter) {
     const numberTasks = document.getElementById('numberTasks');
 
@@ -55,6 +55,53 @@ function currentNumberTask(filter) {
         const items = document.querySelectorAll('.todo__list-item');
         numberTasks.textContent = items.length;
     }
+}
+// =========================================================================== TASK ADD, DELETE, MODIFY
+function viewAll() {
+    todo.forEach((el, i) => {
+        const task = document.createElement('li');
+        const label = document.createElement('label');
+        const span1 = document.createElement('span');
+        const span2 = document.createElement('span');
+        const checkbox = document.createElement('input');
+        const button = document.createElement('button');
+        const img = document.createElement('img');
+        const id = i + 1;
+        // Render task
+        task.classList.add('todo__list-item');
+        task.dataset.id = id;
+        list.appendChild(task);
+
+        label.classList.add('todo__list-label');
+        label.setAttribute("for", `checkbox${id}`);
+        task.appendChild(label);
+
+        checkbox.id = `checkbox${id}`;
+        checkbox.classList.add('checkbox');
+        checkbox.setAttribute("type", "checkbox");
+        if (el.state === false) {
+            checkbox.setAttribute("checked", "");
+            task.dataset.state = false;
+        } else {
+            task.dataset.state = true;
+        }
+        label.appendChild(checkbox);
+
+        span1.classList.add('checkbox-fake');
+        label.appendChild(span1);
+
+        span2.classList.add('description');
+        span2.textContent = el.desc;
+        label.appendChild(span2);
+
+        button.id = `btn${id}`;
+        button.classList.add('button-delete');
+        task.appendChild(button);
+
+        img.setAttribute("src", "images/icon-cross.svg");
+        button.appendChild(img);
+    });
+    currentNumberTask();
 }
 
 function addTodo() {
@@ -106,58 +153,6 @@ function addTodo() {
     currentNumberTask();
 }
 
-function viewAll() {
-    todo.forEach((el, i) => {
-        const task = document.createElement('li');
-        const label = document.createElement('label');
-        const span1 = document.createElement('span');
-        const span2 = document.createElement('span');
-        const checkbox = document.createElement('input');
-        const button = document.createElement('button');
-        const img = document.createElement('img');
-        const id = i + 1;
-        // Render task
-        task.classList.add('todo__list-item');
-        task.dataset.id = id;
-        list.appendChild(task);
-
-        label.classList.add('todo__list-label');
-        label.setAttribute("for", `checkbox${id}`);
-        task.appendChild(label);
-
-        checkbox.id = `checkbox${id}`;
-        checkbox.classList.add('checkbox');
-        checkbox.setAttribute("type", "checkbox");
-        if (el.state === false) {
-            checkbox.setAttribute("checked", "");
-            task.dataset.state = false;
-        } else {
-            task.dataset.state = true;
-        }
-        label.appendChild(checkbox);
-
-        span1.classList.add('checkbox-fake');
-        label.appendChild(span1);
-
-        span2.classList.add('description');
-        span2.textContent = el.desc;
-        label.appendChild(span2);
-
-        button.id = `btn${id}`;
-        button.classList.add('button-delete');
-        task.appendChild(button);
-
-        img.setAttribute("src", "images/icon-cross.svg");
-        button.appendChild(img);
-    });
-    currentNumberTask();
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-    viewAll();
-    btnAll.click();
-});
-
 // Modify task state
 list.addEventListener('change', e => {
     const checkbox = e.target;
@@ -195,56 +190,69 @@ list.addEventListener('click', e => {
     }
     currentNumberTask();
 });
-
 // =========================================================================== FILTERS
-btnAll.addEventListener('click', () => {
-    btnAll.classList.add('js-activeFilter');
-    btnActive.classList.remove('js-activeFilter');
-    btnCompleted.classList.remove('js-activeFilter');
+function filterPendingTask(btnIdSelected) {
 
     const tasks = document.querySelectorAll('li');
 
-    tasks.forEach(task => {
-        task.classList.remove('js-hideTasks');
-    });
-    currentNumberTask('all');
-});
+    if (btnIdSelected === "btnAll") {
+        btnAll.classList.add('js-activeFilter');
+        btnActive.classList.remove('js-activeFilter');
+        btnCompleted.classList.remove('js-activeFilter');
 
-btnActive.addEventListener('click', () => {
-    btnActive.classList.add('js-activeFilter');
-    btnAll.classList.remove('js-activeFilter');
-    btnCompleted.classList.remove('js-activeFilter');
-
-    const tasks = document.querySelectorAll('li');
-
-    tasks.forEach(task => {
-        if (task.dataset.state === "true") {
+        tasks.forEach(task => {
             task.classList.remove('js-hideTasks');
-        } else {
-            task.classList.add('js-hideTasks');
-        }
-    })
-    currentNumberTask('active');
+        });
+        currentNumberTask("all");
+    }
+    else if (btnIdSelected === "btnActive") {
+        btnActive.classList.add('js-activeFilter');
+        btnAll.classList.remove('js-activeFilter');
+        btnCompleted.classList.remove('js-activeFilter');
+
+        tasks.forEach(task => {
+            if (task.dataset.state === "true") { task.classList.remove('js-hideTasks'); } 
+            else { task.classList.add('js-hideTasks'); }
+        })
+        currentNumberTask("active");
+    } 
+    else {
+        btnCompleted.classList.add('js-activeFilter');
+        btnAll.classList.remove('js-activeFilter');
+        btnActive.classList.remove('js-activeFilter');
+
+        tasks.forEach(task => {
+            if (task.dataset.state === "true") { task.classList.add('js-hideTasks'); }
+            else { task.classList.remove('js-hideTasks'); }
+        })
+        currentNumberTask("completed");
+    }
+}
+
+const filterSection = document.querySelector(".todo-list__footer-filters");
+
+filterSection.addEventListener("click", e => {
+    if (e.target.matches("#btnAll")) filterPendingTask(e.target.id);
+    else if (e.target.matches("#btnActive")) filterPendingTask(e.target.id);
+    else filterPendingTask(e.target.id);
+})
+// =========================================================================== CHOOSE THEME
+const imageTheme = document.querySelector('.button-theme img');
+
+function themeChoose(buttonName, themeName) {
+    document.documentElement.setAttribute('data-theme', `${themeName}-theme`);
+    imageTheme.setAttribute('src', `images/icon-${buttonName}.svg`);
+    imageTheme.dataset.img = buttonName;
+}
+
+btnTheme.addEventListener('click', () => {
+    if (imageTheme.dataset.img === "moon") {
+        themeChoose("sun", "dark");
+    } else {
+        themeChoose("moon", "light");
+    }
 });
-
-btnCompleted.addEventListener('click', () => {
-    btnCompleted.classList.add('js-activeFilter');
-    btnAll.classList.remove('js-activeFilter');
-    btnActive.classList.remove('js-activeFilter');
-
-    const tasks = document.querySelectorAll('li');
-
-    tasks.forEach(task => {
-        if (task.dataset.state === "true") {
-            task.classList.add('js-hideTasks');
-        } else {
-            task.classList.remove('js-hideTasks');
-        }
-    })
-    currentNumberTask('completed');
-});
-// =========================================================================== END FILTERS
-
+// ===========================================================================
 btnClearCompleted.addEventListener('click', () => {
     for (let i = todo.length - 1; i >= 0; i--) {
         if (todo[i].state === false) {
@@ -255,25 +263,15 @@ btnClearCompleted.addEventListener('click', () => {
     currentNumberTask();
 });
 
-btnTheme.addEventListener('click', () => {
-    const imageTheme = document.querySelector('.button-theme img');
-    // const imageHero = document.querySelector('.')
-    if (imageTheme.dataset.img === "moon") {
-        document.documentElement.setAttribute('data-theme', 'dark-theme');
-        imageTheme.setAttribute('src', 'images/icon-sun.svg');
-        imageTheme.dataset.img = "sun";
-    } else {
-        document.documentElement.setAttribute('data-theme', 'light-theme');
-        imageTheme.setAttribute('src', 'images/icon-moon.svg');
-        imageTheme.dataset.img = "moon";
-    }
-
-});
-
-input.addEventListener('keypress', (e) => {
+input.addEventListener('keypress', e => {
     if (e.keyCode === 13) {
         e.preventDefault();
         addTodo();
         input.value = "";
     }
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    viewAll();
+    btnAll.click();
 });
