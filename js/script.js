@@ -96,9 +96,11 @@ function viewAll() {
 
         button.id = `btn${id}`;
         button.classList.add('button-delete');
+        button.setAttribute("title", "delete task");
         task.appendChild(button);
 
         img.setAttribute("src", "images/icon-cross.svg");
+        img.setAttribute("alt", "cross icon")
         button.appendChild(img);
     });
     currentNumberTask();
@@ -145,9 +147,11 @@ function addTodo() {
 
     button.id = `btn${number}`;
     button.classList.add('button-delete');
+    button.setAttribute("title", "delete task");
     task.appendChild(button);
 
     img.setAttribute("src", "images/icon-cross.svg");
+    img.setAttribute("alt", "cross icon");
     button.appendChild(img);
     
     currentNumberTask();

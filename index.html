@@ -19,12 +19,12 @@
   <div class="container">
     <div class="header-wrapper">
       <h1 class="title">Todo</h1>
-      <button id="btnTheme" class="button-theme"><img data-img="moon" src="images/icon-moon.svg" alt=""></button>
+      <button id="btnTheme" class="button-theme" title="theme button"><img data-img="moon" src="images/icon-moon.svg" alt="moon icon"></button>
     </div>
 
     <div class="todo">
       <div class="todo__input-wrapper">
-        <input class="todo__input" type="text" placeholder="Create a new todo...">
+        <input class="todo__input" type="text" placeholder="Create a new todo..." title="input task">
       </div>
 
       <ul class="todo__list">
@@ -35,12 +35,12 @@
         <p class="counter-item"><span id="numberTasks"></span> items left</p>
 
         <div class="todo-list__footer-filters">
-          <button id="btnAll" class="button-footer button-footer--filter">All</button>
-          <button id="btnActive" class="button-footer button-footer--filter">Active</button>
-          <button id="btnCompleted" class="button-footer button-footer--filter">Completed</button>
+          <button id="btnAll" class="button-footer button-footer--filter" title="filter all tasks">All</button>
+          <button id="btnActive" class="button-footer button-footer--filter" title="filter active tasks">Active</button>
+          <button id="btnCompleted" class="button-footer button-footer--filter" title="filter completed tasks">Completed</button>
         </div>
 
-        <button id="btnClearCompleted" class="button-footer button-footer--clear">Clear Completed</button>
+        <button id="btnClearCompleted" class="button-footer button-footer--clear" title="clean completed tasks">Clear Completed</button>
       </div>
     </div>
 
@@ -49,8 +49,8 @@
 
   <div class="attribution">
     Challenge by <a class="attribution__link" href="https://www.frontendmentor.io?ref=challenge"
-      target="_blank">Frontend Mentor</a>.
-    Coded by <a class="attribution__link" href="#">Mijail Hernandez</a>.
+      target="_blank" title="frontend mentor">Frontend Mentor</a>.
+    Coded by <a class="attribution__link" href="#" title="author">Mijail Hernandez</a>.
   </div>
 
   <script src="js/script.js"></script>
